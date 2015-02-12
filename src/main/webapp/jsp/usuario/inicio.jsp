@@ -19,9 +19,9 @@
 <%@page import="net.daw.helper.AppInformationHelper"%>
 <%@page import="net.daw.helper.EstadoHelper"%>
 <div class="jumbotron">
-    <h1>Bienvenidos a <%=AppInformationHelper.getAppName()%> <%=EstadoHelper.getAnyo()%></h1>
+    <h1>Bienvenidos a <%=AppInformationHelper.getAppName()%> <!--%=EstadoHelper.getAnyo()%--></h1>
     <h3>Versión (v.<%=EstadoHelper.getVersion()%>) de <%=EstadoHelper.getFecha()%></h3>
-    <h5>Desarrollo de aplicaciones web. CPIFP Ausiàs March. Curso <%=EstadoHelper.getCurso()%></h5>   
+    <h5>Cojete un bol de palomitas y disfruta de una buena pelicula. <!--%=EstadoHelper.getCurso()%--></h5>   
     <%
         if (EstadoHelper.getTipo_estado() == EstadoHelper.getTipo_estado().Debug) {
             out.print("<h5>Modo debug</h5>");
