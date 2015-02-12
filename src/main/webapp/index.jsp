@@ -36,7 +36,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Ajax Yield</title>
+        <title>CineLine</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -94,8 +94,8 @@
 
         <% if (user != null) {%>
 
-        <div class="container">
-            <div class="row">
+        <div class="container-fluid">
+            <div class="row-fluid">
                 <div class="col-md-2" id="menuLateral">
                     <jsp:include page="jsp/menuLateral.jsp" />
                 </div>
@@ -108,10 +108,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12" id="contenidoParseado"></div>   
+                <div class="col-md-10" id="contenidoParseado"></div>   
             </div>
             <div class="row">
-                <div class="col-md-12"><hr><footer><p class="pull-right">&copy; <%=EstadoHelper.getAutor()%>: <%=EstadoHelper.getMailAutor()%> (<%=EstadoHelper.getAnyo()%>) - <%=EstadoHelper.getLicenciaLink()%></p></footer></div> 
+                <div class="col-md-10"><hr><footer><p class="pull-right">&copy; <%=EstadoHelper.getAutor()%>: <%=EstadoHelper.getMailAutor()%> (<%=EstadoHelper.getAnyo()%>) - <%=EstadoHelper.getLicenciaLink()%></p></footer></div> 
             </div>
         </div>            
 
