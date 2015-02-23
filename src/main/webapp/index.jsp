@@ -222,7 +222,31 @@
         <script src="js/specific/actividad/model.js" charset="UTF-8"></script>
         <script src="js/specific/actividad/view.js" charset="UTF-8"></script>
         <script src="js/specific/actividad/routes.js" charset="UTF-8"></script>
+        
+        <!--  Enlaces para CineLine  -->
+        
+        <script src="js/specific/director/control.js" charset="UTF-8"></script>
+        <script src="js/specific/director/model.js" charset="UTF-8"></script>
+        <script src="js/specific/director/view.js" charset="UTF-8"></script>
+        <script src="js/specific/director/routes.js" charset="UTF-8"></script>
+        <script src="js/specific/estudio/control.js" charset="UTF-8"></script>
+        <script src="js/specific/estudio/model.js" charset="UTF-8"></script>
+        <script src="js/specific/estudio/view.js" charset="UTF-8"></script>
+        <script src="js/specific/estudio/routes.js" charset="UTF-8"></script>
+        <script src="js/specific/genero/control.js" charset="UTF-8"></script>
+        <script src="js/specific/genero/model.js" charset="UTF-8"></script>
+        <script src="js/specific/genero/view.js" charset="UTF-8"></script>
+        <script src="js/specific/genero/routes.js" charset="UTF-8"></script>
+        <script src="js/specific/pelicula/control.js" charset="UTF-8"></script>
+        <script src="js/specific/pelicula/model.js" charset="UTF-8"></script>
+        <script src="js/specific/pelicula/view.js" charset="UTF-8"></script>
+        <script src="js/specific/pelicula/routes.js" charset="UTF-8"></script>
+        <script src="js/specific/reparto/control.js" charset="UTF-8"></script>
+        <script src="js/specific/reparto/model.js" charset="UTF-8"></script>
+        <script src="js/specific/reparto/view.js" charset="UTF-8"></script>
+        <script src="js/specific/reparto/routes.js" charset="UTF-8"></script>
 
+        <!--  Fin enlaces CineLine  -->
 
         <script src="js/specific/usuario/control.js" charset="UTF-8"></script>
         <script src="js/specific/usuario/model.js" charset="UTF-8"></script>
@@ -404,7 +428,13 @@
                 fProductoRoutes();
                 fTipoproductoRoutes();
                 fTipodocumentoRoutes();
-
+                
+                /* Aqui van los routes de CineLine */
+                fDirectorRoutes();
+                fEstudioRoutes();
+                fGeneroRoutes();
+                fPeliculaRoutes();
+                fRepartoRoutes();
 
 
                 Path.listen();

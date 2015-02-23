@@ -50,6 +50,11 @@ import net.daw.control.operation.generic.specific.implementation.UsuarioControlO
 import net.daw.control.operation.generic.specific.implementation.UsuarioProveedorControlOperationGenSpimpl;
 import net.daw.control.operation.specific.implementation.OrdenadorControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.ActividadControlOperationSpImpl;
+import net.daw.control.operation.specific.implementation.DirectorControlOperationSpImpl;
+import net.daw.control.operation.specific.implementation.EstudioControlOperationSpImpl;
+import net.daw.control.operation.specific.implementation.GeneroControlOperationSpImpl;
+import net.daw.control.operation.specific.implementation.PeliculaControlOperationSpImpl;
+import net.daw.control.operation.specific.implementation.RepartoControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.ComentarioControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.PropuestaControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.ProductoControlOperationSpImpl;
@@ -82,6 +87,11 @@ import net.daw.control.route.generic.specific.implementation.UsuarioControlRoute
 import net.daw.control.route.generic.specific.implementation.UsuarioProveedorControlRouteGenSpImpl;
 import net.daw.control.route.specific.implementation.OrdenadorControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.ActividadControlRouteSpImpl;
+import net.daw.control.route.specific.implementation.DirectorControlRouteSpImpl;
+import net.daw.control.route.specific.implementation.EstudioControlRouteSpImpl;
+import net.daw.control.route.specific.implementation.GeneroControlRouteSpImpl;
+import net.daw.control.route.specific.implementation.PeliculaControlRouteSpImpl;
+import net.daw.control.route.specific.implementation.RepartoControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.DetallePedidoControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.ProductoControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.EntregaControlRouteSpImpl;
@@ -250,6 +260,31 @@ public class JsonControl extends HttpServlet {
                         ActividadControlRouteSpImpl oActividadRoute = new ActividadControlRouteSpImpl();
                         ActividadControlOperationSpImpl oActividadControlOperation = new ActividadControlOperationSpImpl(request);
                         jsonResult = oActividadRoute.execute(request, oActividadControlOperation);
+                        break;
+                    case "director":
+                        DirectorControlRouteSpImpl oDirectorRoute = new DirectorControlRouteSpImpl();
+                        DirectorControlOperationSpImpl oDirectorControlOperation = new DirectorControlOperationSpImpl(request);
+                        jsonResult = oDirectorRoute.execute(request, oDirectorControlOperation);
+                        break;
+                    case "estudio":
+                        EstudioControlRouteSpImpl oEstudioRoute = new EstudioControlRouteSpImpl();
+                        EstudioControlOperationSpImpl oEstudioControlOperation = new EstudioControlOperationSpImpl(request);
+                        jsonResult = oEstudioRoute.execute(request, oEstudioControlOperation);
+                        break;
+                    case "genero":
+                        GeneroControlRouteSpImpl oGeneroRoute = new GeneroControlRouteSpImpl();
+                        GeneroControlOperationSpImpl oGeneroControlOperation = new GeneroControlOperationSpImpl(request);
+                        jsonResult = oGeneroRoute.execute(request, oGeneroControlOperation);
+                        break;    
+                    case "pelicula":
+                        PeliculaControlRouteSpImpl oPeliculaRoute = new PeliculaControlRouteSpImpl();
+                        PeliculaControlOperationSpImpl oPeliculaControlOperation = new PeliculaControlOperationSpImpl(request);
+                        jsonResult = oPeliculaRoute.execute(request, oPeliculaControlOperation);
+                        break;
+                    case "reparto":
+                        RepartoControlRouteSpImpl oRepartoRoute = new RepartoControlRouteSpImpl();
+                        RepartoControlOperationSpImpl oRepartoControlOperation = new RepartoControlOperationSpImpl(request);
+                        jsonResult = oRepartoRoute.execute(request, oRepartoControlOperation);
                         break;
                     case "propuesta":
                         PropuestaControlRouteSpImpl oPropuestaRoute = new PropuestaControlRouteSpImpl();
