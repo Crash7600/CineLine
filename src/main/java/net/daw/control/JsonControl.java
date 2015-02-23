@@ -28,19 +28,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.daw.control.operation.generic.specific.implementation.AmistadControlOperationGenSpImpl;
-import net.daw.control.operation.generic.specific.implementation.CuestionarioControlOperationGenSpImpl;
-import net.daw.control.operation.specific.implementation.DetallePedidoControlOperationSpImpl;
+
 import net.daw.control.operation.generic.specific.implementation.DocumentoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.DocumentobonitoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.OpcionControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.PedidoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.PreguntaControlOperationGenSpImpl;
-import net.daw.control.operation.generic.specific.implementation.PublicacionControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.EstadoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.EstadotareaControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.ProyectoControlOperationGenSpImpl;
-import net.daw.control.operation.generic.specific.implementation.RespuestaControlOperationGenSpImpl;
+
 import net.daw.control.operation.generic.specific.implementation.TrabajoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.TipodocumentoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.TipotareaControlOperationGenSpImpl;
@@ -48,36 +45,29 @@ import net.daw.control.operation.generic.specific.implementation.TipotemaControl
 import net.daw.control.operation.generic.specific.implementation.TipousuarioControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.UsuarioControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.UsuarioProveedorControlOperationGenSpimpl;
-import net.daw.control.operation.specific.implementation.OrdenadorControlOperationSpImpl;
+
 import net.daw.control.operation.specific.implementation.ActividadControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.DirectorControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.EstudioControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.GeneroControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.PeliculaControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.RepartoControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.ComentarioControlOperationSpImpl;
+
 import net.daw.control.operation.specific.implementation.PropuestaControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.ProductoControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.EntregaControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.ImpuestoControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.MensajeprivadoControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.PostControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.ProveedorControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.TemaControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.TipoproductoControlOperationSpImpl;
+
+
 import net.daw.control.operation.specific.implementation.TipopropuestaControlOperationSpImpl;
-import net.daw.control.route.generic.specific.implementation.AmistadControlRouteGenSpImpl;
-import net.daw.control.route.generic.specific.implementation.CuestionarioControlRouteGenSpImpl;
+
 import net.daw.control.route.generic.specific.implementation.DocumentoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.DocumentobonitoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.PreguntaControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.OpcionControlRouteGenSpImpl;
-import net.daw.control.route.generic.specific.implementation.PublicacionControlRouteGenSpImpl;
+
 import net.daw.control.route.generic.specific.implementation.EstadoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.EstadotareaControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.PedidoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.ProyectoControlRouteGenSpImpl;
-import net.daw.control.route.generic.specific.implementation.RespuestaControlRouteGenSpImpl;
+
 import net.daw.control.route.generic.specific.implementation.TrabajoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.TipodocumentoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.TipotareaControlRouteGenSpImpl;
@@ -102,7 +92,7 @@ import net.daw.control.route.specific.implementation.ImpuestoControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.PropuestaControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.ProveedorControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.TemaControlRouteSpImpl;
-import net.daw.control.route.specific.implementation.TipoproductoControlRouteSpImpl;
+
 import net.daw.control.route.specific.implementation.TipopropuestaControlRouteSpImpl;
 import net.daw.helper.EstadoHelper;
 import net.daw.helper.EstadoHelper.Tipo_estado;
@@ -173,73 +163,8 @@ public class JsonControl extends HttpServlet {
                         UsuarioControlOperationGenSpImpl oUsuarioControlOperation = new UsuarioControlOperationGenSpImpl(request);
                         jsonResult = oUsuarioRoute.execute(request, oUsuarioControlOperation);
                         break;
-                    case "producto":
-                        ProductoControlRouteSpImpl oProductoRoute = new ProductoControlRouteSpImpl();
-                        ProductoControlOperationSpImpl oProductoControlOperation = new ProductoControlOperationSpImpl(request);
-                        jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
-                        break;
-                    case "proveedor":
-                        ProveedorControlRouteSpImpl oProveedorRoute = new ProveedorControlRouteSpImpl();
-                        ProveedorControlOperationSpImpl oProveedorControlOperation = new ProveedorControlOperationSpImpl(request);
-                        jsonResult = oProveedorRoute.execute(request, oProveedorControlOperation);
-                        break;
-                    case "tipoproducto":
-                        TipoproductoControlRouteSpImpl oTipoproductoRoute = new TipoproductoControlRouteSpImpl();
-                        TipoproductoControlOperationSpImpl oTipoproductoControlOperation = new TipoproductoControlOperationSpImpl(request);
-                        jsonResult = oTipoproductoRoute.execute(request, oTipoproductoControlOperation);
-                        break;
-                    case "ordenador":
-                        OrdenadorControlRouteSpImpl oOrdenadorRoute = new OrdenadorControlRouteSpImpl();
-                        OrdenadorControlOperationSpImpl oOrdenadorControlOperation = new OrdenadorControlOperationSpImpl(request);
-                        jsonResult = oOrdenadorRoute.execute(request, oOrdenadorControlOperation);
-                        break;
-                    case "estado":
-                        EstadoControlRouteGenSpImpl oEstadoRoute = new EstadoControlRouteGenSpImpl();
-                        EstadoControlOperationGenSpImpl oEstadoControlOperation = new EstadoControlOperationGenSpImpl(request);
-                        jsonResult = oEstadoRoute.execute(request, oEstadoControlOperation);
-                        break;
-                    case "amistad":
-                        AmistadControlRouteGenSpImpl oAmistadRoute = new AmistadControlRouteGenSpImpl();
-                        AmistadControlOperationGenSpImpl oAmistadControlOperation = new AmistadControlOperationGenSpImpl(request);
-                        jsonResult = oAmistadRoute.execute(request, oAmistadControlOperation);
-                        break;
-                    case "publicacion":
-                        PublicacionControlRouteGenSpImpl oPublicacionRoute = new PublicacionControlRouteGenSpImpl();
-                        PublicacionControlOperationGenSpImpl oPublicacionControlOperation = new PublicacionControlOperationGenSpImpl(request);
-                        jsonResult = oPublicacionRoute.execute(request, oPublicacionControlOperation);
-                        break;
-                    case "post":
-                        PostControlRouteSpImpl oPostRoute = new PostControlRouteSpImpl();
-                        PostControlOperationSpImpl oPostControlOperation = new PostControlOperationSpImpl(request);
-                        jsonResult = oPostRoute.execute(request, oPostControlOperation);
-                        break;
-                    case "tema":
-                        TemaControlRouteSpImpl oTemaRoute = new TemaControlRouteSpImpl();
-                        TemaControlOperationSpImpl oTemaControlOperation = new TemaControlOperationSpImpl(request);
-                        jsonResult = oTemaRoute.execute(request, oTemaControlOperation);
-                        break;
-                    case "tipotema":
-                        TipotemaControlRouteGenSpImpl oTipotemaRoute = new TipotemaControlRouteGenSpImpl();
-                        TipotemaControlOperationGenSpImpl oTipotemaControlOperation = new TipotemaControlOperationGenSpImpl(request);
-                        jsonResult = oTipotemaRoute.execute(request, oTipotemaControlOperation);
-                        break;
-                    case "mensajeprivado":
-                        MensajeprivadoControlRouteSpImpl oMensajeprivadoRoute = new MensajeprivadoControlRouteSpImpl();
-                        MensajeprivadoControlOperationSpImpl oMensajeprivadoControlOperation = new MensajeprivadoControlOperationSpImpl(request);
-                        jsonResult = oMensajeprivadoRoute.execute(request, oMensajeprivadoControlOperation);
-                        break;
 
-                    case "impuesto":
-                        ImpuestoControlRouteSpImpl oImpuestoRoute = new ImpuestoControlRouteSpImpl();
-                        ImpuestoControlOperationSpImpl oImpuestoControlOperation = new ImpuestoControlOperationSpImpl(request);
-                        jsonResult = oImpuestoRoute.execute(request, oImpuestoControlOperation);
-                        break;
-
-                    case "cuestionario":
-                        CuestionarioControlRouteGenSpImpl oCuestionarioRoute = new CuestionarioControlRouteGenSpImpl();
-                        CuestionarioControlOperationGenSpImpl oCuestionarioControlOperation = new CuestionarioControlOperationGenSpImpl(request);
-                        jsonResult = oCuestionarioRoute.execute(request, oCuestionarioControlOperation);
-                        break;
+                    
                     case "opcion":
                         OpcionControlRouteGenSpImpl oOpcionRoute = new OpcionControlRouteGenSpImpl();
                         OpcionControlOperationGenSpImpl oOpcionControlOperation = new OpcionControlOperationGenSpImpl(request);
@@ -251,11 +176,7 @@ public class JsonControl extends HttpServlet {
                         jsonResult = oPreguntaRoute.execute(request, oPreguntaControlOperation);
                         break;
 
-                    case "detalle_pedido":
-                        DetallePedidoControlRouteSpImpl oDetallePedidoRoute = new DetallePedidoControlRouteSpImpl();
-                        DetallePedidoControlOperationSpImpl oDetallePedidoControlOperation = new DetallePedidoControlOperationSpImpl(request);
-                        jsonResult = oDetallePedidoRoute.execute(request, oDetallePedidoControlOperation);
-                        break;
+                   
                     case "actividad":
                         ActividadControlRouteSpImpl oActividadRoute = new ActividadControlRouteSpImpl();
                         ActividadControlOperationSpImpl oActividadControlOperation = new ActividadControlOperationSpImpl(request);
@@ -291,32 +212,16 @@ public class JsonControl extends HttpServlet {
                         PropuestaControlOperationSpImpl oPropuestaControlOperation = new PropuestaControlOperationSpImpl(request);
                         jsonResult = oPropuestaRoute.execute(request, oPropuestaControlOperation);
                         break;
-                    case "entrega":
-                        EntregaControlRouteSpImpl oEntregaRoute = new EntregaControlRouteSpImpl();
-                        EntregaControlOperationSpImpl oEntregaControlOperation = new EntregaControlOperationSpImpl(request);
-                        jsonResult = oEntregaRoute.execute(request, oEntregaControlOperation);
-                        break;
-                    case "pedido":
-                        PedidoControlRouteGenSpImpl oPedidoRoute = new PedidoControlRouteGenSpImpl();
-                        PedidoControlOperationGenSpImpl oPedidoControlOperation = new PedidoControlOperationGenSpImpl(request);
-                        jsonResult = oPedidoRoute.execute(request, oPedidoControlOperation);
-                        break;
-                    case "respuesta":
-                        RespuestaControlRouteGenSpImpl oRespuestaRoute = new RespuestaControlRouteGenSpImpl();
-                        RespuestaControlOperationGenSpImpl oRespuestaControlOperation = new RespuestaControlOperationGenSpImpl(request);
-                        jsonResult = oRespuestaRoute.execute(request, oRespuestaControlOperation);
-                        break;
+                    
+                    
+                    
                     case "usuarioProveedor":
                         UsuarioProveedorControlRouteGenSpImpl oUsuarioProveedorRoute = new UsuarioProveedorControlRouteGenSpImpl();
                         UsuarioProveedorControlOperationGenSpimpl oUsuarioProveedorOperation = new UsuarioProveedorControlOperationGenSpimpl(request);
                         jsonResult = oUsuarioProveedorRoute.execute(request, oUsuarioProveedorOperation);
                         break;
 
-                    case "comentario":
-                        ComentarioControlRouteSpImpl oComentarioRoute = new ComentarioControlRouteSpImpl();
-                        ComentarioControlOperationSpImpl oComentarioControlOperation = new ComentarioControlOperationSpImpl(request);
-                        jsonResult = oComentarioRoute.execute(request, oComentarioControlOperation);
-                        break;
+                    
 
                     case "tipopropuesta":
                         TipopropuestaControlRouteSpImpl oTipopropuestaRoute = new TipopropuestaControlRouteSpImpl();

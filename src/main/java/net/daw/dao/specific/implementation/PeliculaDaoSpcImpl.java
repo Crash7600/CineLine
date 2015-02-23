@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
-import net.daw.bean.generic.specific.implementation.ActividadBeanGenSpImpl;
+import net.daw.bean.generic.specific.implementation.PeliculaBeanGenSpImpl;
 import net.daw.dao.publicinterface.MetaDaoInterface;
 import net.daw.dao.publicinterface.TableDaoInterface;
 import net.daw.dao.publicinterface.ViewDaoInterface;
@@ -36,7 +36,7 @@ import net.daw.helper.FilterBeanHelper;
  *
  * @author al037805
  */
-public class PeliculaDaoSpcImpl implements ViewDaoInterface<ActividadBeanGenSpImpl>, TableDaoInterface<ActividadBeanGenSpImpl>, MetaDaoInterface {
+public class PeliculaDaoSpcImpl implements ViewDaoInterface<PeliculaBeanGenSpImpl>, TableDaoInterface<PeliculaBeanGenSpImpl>, MetaDaoInterface {
 
     private String strTableName = null;
     private MysqlDataSpImpl oMysql = null;
@@ -75,74 +75,75 @@ public class PeliculaDaoSpcImpl implements ViewDaoInterface<ActividadBeanGenSpIm
     }
 
     @Override
-    public ArrayList<ActividadBeanGenSpImpl> getPage(int intRegsPerPag, int intPage, ArrayList<FilterBeanHelper> hmFilter, HashMap<String, String> hmOrder) throws Exception {
+    public ArrayList<PeliculaBeanGenSpImpl> getPage(int intRegsPerPag, int intPage, ArrayList<FilterBeanHelper> hmFilter, HashMap<String, String> hmOrder) throws Exception {
         ArrayList<Integer> arrId;
-        ArrayList<ActividadBeanGenSpImpl> arrActividad = new ArrayList<>();
+        ArrayList<PeliculaBeanGenSpImpl> arrPelicula = new ArrayList<>();
         try {
             arrId = oMysql.getPage(strTableName, intRegsPerPag, intPage, hmFilter, hmOrder);
             Iterator<Integer> iterador = arrId.listIterator();
             while (iterador.hasNext()) {
-                ActividadBeanGenSpImpl oActividadBean = new ActividadBeanGenSpImpl(iterador.next());
-                arrActividad.add(this.get(oActividadBean, 1));
+                PeliculaBeanGenSpImpl oPeliculaBean = new PeliculaBeanGenSpImpl(iterador.next());
+                arrPelicula.add(this.get(oPeliculaBean, 1));
             }
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getPage ERROR: " + ex.getMessage()));
         }
-        return arrActividad;
+        return arrPelicula;
     }
 
     @Override
-    public ActividadBeanGenSpImpl get(ActividadBeanGenSpImpl oActividadBean, Integer expand) throws Exception {
-        if (oActividadBean.getId() > 0) {
+    public PeliculaBeanGenSpImpl get(PeliculaBeanGenSpImpl oPeliculaBean, Integer expand) throws Exception {
+        if (oPeliculaBean.getId() > 0) {
             try {
-                if (!oMysql.existsOne(strTableName, oActividadBean.getId())) {
-                    oActividadBean.setId(0);
+                if (!oMysql.existsOne(strTableName, oPeliculaBean.getId())) {
+                    oPeliculaBean.setId(0);
                 } else {
-                    oActividadBean.setEnunciado(oMysql.getOne(strTableName, "enunciado", oActividadBean.getId()));
-
-                    String fecha = "";
-                    fecha = oMysql.getOne(strTableName, "fecha", oActividadBean.getId());
-                    SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-                    oActividadBean.setFecha(date.parse(fecha));
-
-                    oActividadBean.setEvaluacion(Integer.valueOf(oMysql.getOne(strTableName, "evaluacion", oActividadBean.getId())));
-                    oActividadBean.setActivo((byte) Integer.parseInt(oMysql.getOne(strTableName, "activo", oActividadBean.getId())));
+                    oPeliculaBean.setNombre_pelicula(oMysql.getOne(strTableName, "nombre_pelicula", oPeliculaBean.getId()));
+                    oPeliculaBean.setAnyo(Integer.valueOf(oMysql.getOne(strTableName, "anyo", oPeliculaBean.getId())));
+                    oPeliculaBean.setCiudad(oMysql.getOne(strTableName, "ciudad", oPeliculaBean.getId()));
+                    oPeliculaBean.setWebsite(oMysql.getOne(strTableName, "website", oPeliculaBean.getId()));
+                    oPeliculaBean.setDuracion(Integer.valueOf(oMysql.getOne(strTableName, "duracion", oPeliculaBean.getId()))); 
+                    oPeliculaBean.setPuntuacion(Integer.valueOf(oMysql.getOne(strTableName, "puntuacion", oPeliculaBean.getId())));
+                    oPeliculaBean.setUrl(oMysql.getOne(strTableName, "url", oPeliculaBean.getId()));
+                    oPeliculaBean.setId_genero(Integer.valueOf(oMysql.getOne(strTableName, "id_genero", oPeliculaBean.getId())));
 
                 }
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":get ERROR: " + ex.getMessage()));
             }
         } else {
-            oActividadBean.setId(0);
+            oPeliculaBean.setId(0);
         }
-        return oActividadBean;
+        return oPeliculaBean;
     }
 
     @Override
-    public ActividadBeanGenSpImpl set(ActividadBeanGenSpImpl oActividadBean) throws Exception {
+    public PeliculaBeanGenSpImpl set(PeliculaBeanGenSpImpl oPeliculaBean) throws Exception {
         try {
-            if (oActividadBean.getId() == 0) {
-                oActividadBean.setId(oMysql.insertOne(strTableName));
+            if (oPeliculaBean.getId() == 0) {
+                oPeliculaBean.setId(oMysql.insertOne(strTableName));
             }
-            oMysql.updateOne(oActividadBean.getId(), strTableName, "enunciado", oActividadBean.getEnunciado());
+            oMysql.updateOne(oPeliculaBean.getId(), strTableName, "nombre_pelicula", oPeliculaBean.getNombre_pelicula());
+            oMysql.updateOne(oPeliculaBean.getId(), strTableName, "anyo", oPeliculaBean.getAnyo().toString());
+            oMysql.updateOne(oPeliculaBean.getId(), strTableName, "ciudad", oPeliculaBean.getCiudad());
+            oMysql.updateOne(oPeliculaBean.getId(), strTableName, "website", oPeliculaBean.getWebsite());
+            oMysql.updateOne(oPeliculaBean.getId(), strTableName, "duracion", oPeliculaBean.getDuracion().toString());
+            oMysql.updateOne(oPeliculaBean.getId(), strTableName, "puntuacion", oPeliculaBean.getPuntuacion().toString());
+            oMysql.updateOne(oPeliculaBean.getId(), strTableName, "url", oPeliculaBean.getUrl());
+            oMysql.updateOne(oPeliculaBean.getId(), strTableName, "id_genero", oPeliculaBean.getId_genero().toString());
 
-            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-            oMysql.updateOne(oActividadBean.getId(), strTableName, "fecha", date.format(oActividadBean.getFecha()));
-
-            oMysql.updateOne(oActividadBean.getId(), strTableName, "evaluacion", oActividadBean.getEvaluacion().toString());
-
-            oMysql.updateOne(oActividadBean.getId(), strTableName, "activo", Integer.toString(oActividadBean.getActivo()));
+            
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":set ERROR: " + ex.getMessage()));
         }
-        return oActividadBean;
+        return oPeliculaBean;
     }
 
     @Override
-    public int remove(ActividadBeanGenSpImpl oActividadBean) throws Exception {
+    public int remove(PeliculaBeanGenSpImpl oPeliculaBean) throws Exception {
         int result = 0;
         try {
-            result = oMysql.removeOne(oActividadBean.getId(), strTableName);
+            result = oMysql.removeOne(oPeliculaBean.getId(), strTableName);
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":remove ERROR: " + ex.getMessage()));
         }

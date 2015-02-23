@@ -16,7 +16,7 @@
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 --%>
 
-<form class="form-horizontal" role="form" action="#" id="actividadForm" name="formulario">
+<form class="form-horizontal" role="form" action="#" id="peliculaForm" name="formulario">
     <div class="form-group">
         <label class="col-sm-2 control-label" for="id">Id:</label>
         <div class="col-sm-2">
@@ -24,37 +24,62 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label"  for="titulo">Enunciado:</label>
+        <label class="col-sm-2 control-label"  for="titulo">Nombre de la pelicula:</label>
         <div class="col-sm-6">
-            <input type="text" id="enunciado" class="form-control"  name="enunciado" size="25" placeholder="enunciado" />
+            <input type="text" id="nombre_pelicula" class="form-control"  name="nombre_pelicula" size="25" placeholder="nombre_pelicula" />
         </div>
     </div>
     
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="fecha_group">Fecha:</label> 
-        <div class="col-sm-3">           
-            <div class='input-group date' id='fecha_group'>
-                <input type='text' class="form-control" id='fecha' name="fecha_group" placeholder="Fecha" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label"  for="evaluacion">Evaluacion:</label>
+        <label class="col-sm-2 control-label"  for="anyo">Anyo de la pelicula:</label>
         <div class="col-sm-2">
-            <input type="text"  class="form-control"  id="evaluacion" name="evaluacion" size="15" placeholder="evaluacion" />
+            <input type="text"  class="form-control"  id="anyo" name="anyo" size="15" placeholder="anyo" />
         </div>
     </div>
     
     <div class="form-group">
-        <label class="col-sm-2 control-label"  for="activo">Activo:</label>
-        <div class="col-sm-1">
-            <input type="checkbox" id="activo" name="activo" value="true" />
+        <label class="col-sm-2 control-label"  for="titulo">Ciudad de la pelicula:</label>
+        <div class="col-sm-6">
+            <input type="text" id="ciudad" class="form-control"  name="ciudad" size="25" placeholder="ciudad" />
         </div>
     </div>
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label"  for="titulo">Website de la pelicula:</label>
+        <div class="col-sm-6">
+            <input type="text" id="website" class="form-control"  name="website" size="25" placeholder="website" />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label"  for="duracion">Duracion de la pelicula:</label>
+        <div class="col-sm-2">
+            <input type="text"  class="form-control"  id="duracion" name="duracion" size="15" placeholder="duracion" />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label"  for="puntuacion">Puntuacion de la pelicula:</label>
+        <div class="col-sm-2">
+            <input type="text"  class="form-control"  id="puntuacion" name="puntuacion" size="15" placeholder="puntuacion" />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label"  for="url">URL de la pelicula:</label>
+        <div class="col-sm-6">
+            <input type="text" id="url" class="form-control"  name="url" size="25" placeholder="url" />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label"  for="id_genero">Genero de la pelicula:</label>
+        <div class="col-sm-2">
+            <input type="text"  class="form-control"  id="id_genero" name="id_genero" size="15" placeholder="id_genero" />
+        </div>
+    </div>
+    
+    
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
@@ -74,13 +99,13 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-        $('#fecha_group').datetimepicker({
+        /*$('#fecha_group').datetimepicker({
             pickTime: false,
             language: 'es',
             showToday: true
-        });
+        });*/
         //http://jqueryvalidation.org/documentation/
-        $('#actividadForm')
+        $('#peliculaForm')
                 .bootstrapValidator({
                     container: '#messages',
                     feedbackIcons: {
@@ -89,44 +114,88 @@
                         validating: 'glyphicon glyphicon-refresh'
                     },
                     fields: {
-                        enunciado: {
+                        nombre_pelicula: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un enunciado'
+                                    message: 'Debe introducir un nombre para la pelicula'
                                 },
                                 stringLength: {
                                     max: 255,
-                                    message: 'El enunciado debe tener como máximo 255 caracteres'
+                                    message: 'El nombre de la pelicula debe tener como máximo 255 caracteres'
                                 }
                             }
                         },
-                        fecha_group: {
+                     
+                        anyo: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir una fecha'
-                                },
-                                date: {
-                                    format: 'DD/MM/YYYY',
-                                    message: 'La fecha no tiene un formato DD/MM/YYYY'
-                                }
-                            }
-                        },
-                        evaluacion: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir un número para la evaluacion'
+                                    message: 'Debe introducir un anyo para la pelicula'
                                 },
                                 integer: {
-                                    message: 'El valor de la evaluacion debe ser un entero'
-                                },
-                                between: {
-                                    min: 1,
-                                    max: 3,
-                                    message: 'La evaluacion debe ser 1, 2 o 3'
+                                    message: 'El valor del anyo debe ser un entero'
                                 }
+                                
                             }
 
+                        },
+                        ciudad: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Debe introducir una ciudad para la pelicula'
+                                },
+                                stringLength: {
+                                    max: 255,
+                                    message: 'El nombre de la ciudad debe tener como máximo 255 caracteres'
+                                }
+                            }
+                        },
+                        website: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Debe introducir la website'
+                                },
+                                stringLength: {
+                                    max: 255,
+                                    message: 'La website debe tener como máximo 255 caracteres'
+                                }
+                            }
+                        },
+                        duracion: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Debe introducir una duracion para la pelicula'
+                                },
+                                integer: {
+                                    message: 'La duracion debe ser en minutos'
+                                }
+                                
+                            }
+
+                        },
+                        puntuacion: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Debe introducir una puntuacion para la pelicula'
+                                },
+                                integer: {
+                                    message: 'El valor de la puntuacion debe ser un entero'
+                                }
+                                
+                            }
+
+                        },
+                        url: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Debe introducir una url para la pelicula'
+                                },
+                                stringLength: {
+                                    max: 255,
+                                    message: 'La url debe tener como máximo 255 caracteres'
+                                }
+                            }
                         }
+                        
                     /*    activo: {
                             validators: {
                                 notEmpty: {
@@ -153,10 +222,10 @@
 
                 
                 ;
-        $('#fecha_group').on('dp.change dp.show', function(e) {
+      //  $('#fecha_group').on('dp.change dp.show', function(e) {
 // Revalidate the date when user change it
-            $('#actividadForm').bootstrapValidator('revalidateField', 'fecha_group');
-        });
+      //      $('#peliculaForm').bootstrapValidator('revalidateField', 'fecha_group');
+    //    });
         
     });       
 

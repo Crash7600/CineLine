@@ -16,7 +16,7 @@
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 --%>
 
-<form class="form-horizontal" role="form" action="#" id="actividadForm" name="formulario">
+<form class="form-horizontal" role="form" action="#" id="repartoForm" name="formulario">
     <div class="form-group">
         <label class="col-sm-2 control-label" for="id">Id:</label>
         <div class="col-sm-2">
@@ -24,37 +24,31 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label"  for="titulo">Enunciado:</label>
+        <label class="col-sm-2 control-label"  for="titulo">Nombre del actor:</label>
         <div class="col-sm-6">
-            <input type="text" id="enunciado" class="form-control"  name="enunciado" size="25" placeholder="enunciado" />
+            <input type="text" id="nombre_actor" class="form-control"  name="nombre_actor" size="25" placeholder="nombre_actor" />
         </div>
     </div>
     
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="fecha_group">Fecha:</label> 
+        <label class="col-sm-2 control-label" for="fecha_group">Fecha de nacimiento:</label> 
         <div class="col-sm-3">           
             <div class='input-group date' id='fecha_group'>
-                <input type='text' class="form-control" id='fecha' name="fecha_group" placeholder="Fecha" />
+                <input type='text' class="form-control" id='fecha_nacimiento' name="fecha_group" placeholder="fecha_nacimiento" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
         </div>
     </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label"  for="evaluacion">Evaluacion:</label>
-        <div class="col-sm-2">
-            <input type="text"  class="form-control"  id="evaluacion" name="evaluacion" size="15" placeholder="evaluacion" />
-        </div>
-    </div>
     
     <div class="form-group">
-        <label class="col-sm-2 control-label"  for="activo">Activo:</label>
-        <div class="col-sm-1">
-            <input type="checkbox" id="activo" name="activo" value="true" />
+        <label class="col-sm-2 control-label"  for="titulo">Ciudad:</label>
+        <div class="col-sm-6">
+            <input type="text" id="ciudad" class="form-control"  name="ciudad" size="25" placeholder="ciudad" />
         </div>
     </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
@@ -80,7 +74,7 @@
             showToday: true
         });
         //http://jqueryvalidation.org/documentation/
-        $('#actividadForm')
+        $('#repartoForm')
                 .bootstrapValidator({
                     container: '#messages',
                     feedbackIcons: {
@@ -89,14 +83,14 @@
                         validating: 'glyphicon glyphicon-refresh'
                     },
                     fields: {
-                        enunciado: {
+                        nombre_actor: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un enunciado'
+                                    message: 'Debe introducir un nombre para el actor'
                                 },
                                 stringLength: {
                                     max: 255,
-                                    message: 'El enunciado debe tener como máximo 255 caracteres'
+                                    message: 'El nombre del actor debe tener como máximo 255 caracteres'
                                 }
                             }
                         },
@@ -111,7 +105,18 @@
                                 }
                             }
                         },
-                        evaluacion: {
+                        ciudad: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Debe introducir un nombre de la ciudad'
+                                },
+                                stringLength: {
+                                    max: 255,
+                                    message: 'El nombre de la ciudad debe tener como máximo 255 caracteres'
+                                }
+                            }
+                        }
+                        /** evaluacion: {
                             validators: {
                                 notEmpty: {
                                     message: 'Debe introducir un número para la evaluacion'
@@ -126,7 +131,7 @@
                                 }
                             }
 
-                        }
+                        }*/
                     /*    activo: {
                             validators: {
                                 notEmpty: {
@@ -155,7 +160,7 @@
                 ;
         $('#fecha_group').on('dp.change dp.show', function(e) {
 // Revalidate the date when user change it
-            $('#actividadForm').bootstrapValidator('revalidateField', 'fecha_group');
+            $('#repartoForm').bootstrapValidator('revalidateField', 'fecha_group');
         });
         
     });       

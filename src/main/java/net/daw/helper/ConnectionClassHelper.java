@@ -34,7 +34,7 @@ public class ConnectionClassHelper {
             return System.getenv("OPENSHIFT_APP_NAME");
 
         } else {
-            return "ausiasYield2014";
+            return "peliculasdb";
         }
     }
 
