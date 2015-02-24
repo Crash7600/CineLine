@@ -34,7 +34,7 @@ public class ConnectionClassHelper {
             return System.getenv("OPENSHIFT_APP_NAME");
 
         } else {
-            return "peliculasdb";
+            return "peliculas";
         }
     }
 
@@ -52,7 +52,7 @@ public class ConnectionClassHelper {
             //return System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
             return "la contraseña esta en la web de openshift";
         } else {
-            return "bitnami";
+            return "opadmin";
         }
     }
 

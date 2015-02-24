@@ -428,8 +428,6 @@
                 fProductoRoutes();
                 fTipoproductoRoutes();
                 fTipodocumentoRoutes();
-                
-                /* Aqui van los routes de CineLine */
                 fDirectorRoutes();
                 fEstudioRoutes();
                 fGeneroRoutes();
